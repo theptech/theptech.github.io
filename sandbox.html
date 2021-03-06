@@ -249,6 +249,7 @@
 <body>
 
 
+
 <!-- <p align="center"><img src="images/geneva/icostLogo2012.png"></p> -->
 <div id="wrap">
 	<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -304,7 +305,6 @@
 <div class="container ">
 
 
-
 <div class="alert alert-danger alert-dismissible fade " role="alert" id="ie-alert">
   <strong> Compatibility Warning!</strong>  Please use Chrome/Safari to access this site. Some key features do not work in browsers other than Chrome.
   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -354,14 +354,11 @@ $( document ).ready(function() {
 </script>
 
 
-
-
-<div class="alert alert-success" role="alert">
+    <div class="alert alert-success" role="alert">
   <h4 class="alert-heading">Registration Now Open!</h4>
-  <p><b>Physical Meeting</b> of main conference : <b>900 SGD</b></p><hr>
-  <p><b>Virtual Meeting (Authors)</b> of main conference : <b>300 SGD</b></p><hr>
-  <p class="mb-0"><b>Virtual Meeting (Non-author)</b> Participants of main conference : <b>100 SGD</b></p><hr>
-
+  <p><b>Authors</b> of main conference : <b>0.01 SGD</b> </p>
+  <hr>
+  <p class="mb-0"><b> Non-author</b> Participants of main conference : <b>0.01 SGD</b> </p>
 </div>
 
 
@@ -515,9 +512,8 @@ $( document ).ready(function() {
 					<label class="control-label">Registration Fees</label>
 
 					<select class="form-control should_expire" type="text" id="ip_amount">
-            <option data-discount=1 value="900">PhysicalMeeting 900SGD</option>
-            <option data-discount=1 value="300">VirtualMeeting Authors 300SGD</option>
-            <option data-discount=1 value="100">VirtualMeeting Non-Authors 100SGD</option>
+						<option data-discount=1 value="0.01">Authors-0.01SGD</option>
+						<option data-discount=1 value="0.03">non-Authors-0.01SGD</option>
                     </select>>
 
 					
@@ -611,7 +607,7 @@ $( document ).ready(function() {
 
 
 
-        const redis_page = "https://conference.wj2ai.com/misc/redis.php"
+        const redis_page = "https://conference.wj2ai.com/misc/redis.php?conference=iceccs25th"
         const notify_page = "rece.html"
 
 
@@ -738,13 +734,9 @@ paypal.Button.render({
 
     // Pass the client ids to use to create your transaction on sandbox and production environments
 
-  //      sandbox:    'AcB-RnPuwRNc8uBek-xRKs_gZqhQyX4bMWhwH8rl3w5W-kz_H25a3aMNhw_BpOeo-p9pi_QeJEE-XfuF', // from https://developer.paypal.com/developer/applications/
-//        production: 'ARAhl4h5tBLyb-seeNvylmhl6H-rgvEsP2OEAzYZYq4sZE-CIitHcy4zCbeW9JWBJeCog-iynzBOG44g'  // from https://developer.paypal.com/developer/applications/
     client: {
-//        production: "ARAhl4h5tBLyb-seeNvylmhl6H-rgvEsP2OEAzYZYq4sZE-CIitHcy4zCbeW9JWBJeCog-iynzBOG44g",
-//        sandbox: "ARAhl4h5tBLyb-seeNvylmhl6H-rgvEsP2OEAzYZYq4sZE-CIitHcy4zCbeW9JWBJeCog-iynzBOG44g",
-            production: "Ac86nKLk5dWit0VkOdjyNPiPhPOSzqK-JDgNo8Saul336prJH0Z99NaVowdZ88Ci8ufx4JERRMOWVJ8o",
-        sandbox: "Ac86nKLk5dWit0VkOdjyNPiPhPOSzqK-JDgNo8Saul336prJH0Z99NaVowdZ88Ci8ufx4JERRMOWVJ8o",
+                production: "ARAhl4h5tBLyb-seeNvylmhl6H-rgvEsP2OEAzYZYq4sZE-CIitHcy4zCbeW9JWBJeCog-iynzBOG44g",
+        sandbox: "ARAhl4h5tBLyb-seeNvylmhl6H-rgvEsP2OEAzYZYq4sZE-CIitHcy4zCbeW9JWBJeCog-iynzBOG44g",
 
     },
 

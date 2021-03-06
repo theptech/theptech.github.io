@@ -1,0 +1,357 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Receipt for ICECCS2020</title>
+    
+    <style>
+      .ppp {
+    background-color: #9e9e9e;
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1IiBoZWlnaHQ9IjUiPgo8cmVjdCB3aWR0aD0iNSIgaGVpZ2h0PSI1IiBmaWxsPSIjOWU5ZTllIj48L3JlY3Q+CjxwYXRoIGQ9Ik0wIDVMNSAwWk02IDRMNCA2Wk0tMSAxTDEgLTFaIiBzdHJva2U9IiM4ODgiIHN0cm9rZS13aWR0aD0iMSI+PC9wYXRoPgo8L3N2Zz4=);
+    -webkit-transition: left 500ms;
+    transition: left 500ms;
+
+
+    bottom: 0;
+    right: 0;
+    overflow: auto;
+position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    border: 0;
+
+      }
+    .invoice-box {
+    margin: 13px auto;
+    box-shadow: 1px 1px 3px 1px #333;
+    border-collapse: separate;
+    position: relative;
+    background-color: white;
+    overflow: hidden;
+
+        max-width: 800px;
+        margin: auto;
+        padding: 30px;
+
+    }
+    
+    .invoice-box table {
+        width: 100%;
+        line-height: inherit;
+        text-align: left;
+    }
+    
+    .invoice-box table td {
+        padding: 5px;
+        vertical-align: top;
+    }
+    
+    .invoice-box table tr td:nth-child(2) {
+        text-align: right;
+    }
+    
+    .invoice-box table tr.top table td {
+        padding-bottom: 20px;
+    }
+    
+    .invoice-box table tr.top table td.title {
+        font-size: 45px;
+        line-height: 45px;
+        color: #333;
+    }
+    
+    .invoice-box table tr.information table td {
+        padding-bottom: 40px;
+    }
+    
+    .invoice-box table tr.heading td {
+        background: #c6daef;
+        border-bottom: 1px solid #ddd;
+        font-weight: bold;
+    }
+    
+    .invoice-box table tr.details td {
+        padding-bottom: 20px;
+    }
+    
+    .invoice-box table tr.item td{
+        border-bottom: 1px solid #eee;
+    }
+    
+    .invoice-box table tr.item.last td {
+        border-bottom: none;
+    }
+    
+    .invoice-box table tr.total td:nth-child(2) {
+        border-top: 2px solid #eee;
+        font-weight: bold;
+    }
+    
+    @media only screen and (max-width: 600px) {
+        .invoice-box table tr.top table td {
+            width: 100%;
+            display: block;
+            text-align: center;
+        }
+        
+        .invoice-box table tr.information table td {
+            width: 100%;
+            display: block;
+            text-align: center;
+        }
+    }
+    
+    /** RTL **/
+    .rtl {
+        direction: rtl;
+        font-family: Tahoma, 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
+    }
+    
+    .rtl table {
+        text-align: right;
+    }
+    
+    .rtl table tr td:nth-child(2) {
+        text-align: left;
+    }
+    </style>
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+
+</head>
+
+<body>
+   <div class="ppp">
+    <div class="invoice-box"  id="dvContainer" >
+        <table cellpadding="0" cellspacing="0">
+
+            
+            <tr class="information">
+                <td colspan="2">
+                    <table>
+                        <tr>
+                            <td>
+                                <p>To: <h3 style="display:inline-block;"> <div data="first_name" style = "text-transform:capitalize;display:inline-block;"></div>  <div data="last_name" style = "text-transform:capitalize;display:inline-block;"></div> </h3> </p><br/>
+                                <!--<p>To: <h3 data="first_name" ></h3> <h3 data="last_name" ></h3></p><br> -->
+                            </td>
+                            
+                            <td>
+                                <h1>Receipt</h1><br>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+
+            <tr class="information">
+                <td colspan="2">
+                    <table>
+                        <tr>
+                            <td>
+                                <div data="company"></div><br>
+                                <div data="useraddress"></div><br>
+                                <div data="night_phone_a"></div><br>
+                                <!--<p><div data="first_name" style="text-transform:capitalize;"></div> <div style="text-transform:capitalize;" data="last_name"></div></p><br> -->
+                                <!-- <div data="email"></div><br>. -->
+
+                            </td>
+                            
+                            <td>
+                                RECEIPT No. <div data="paypal_ref"> </div><br>
+                                <div id="date"></div><br>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            
+
+
+     <tr class="information">
+                <td colspan="2">
+                    <table>
+                        <tr>
+                            <td>
+                                <b>For</b><br>
+                                THE 25TH INTERNATIONAL CONFERENCE ON ENGINEERING OF COMPLEX COMPUTER SYSTEMS<br>
+                                ICECCS 2020
+                            </td>
+                            
+                            <td>
+
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            
+
+            
+            <tr class="heading">
+                <td>
+                    Item
+                </td>
+                
+                <td>
+                    Price
+                </td>
+            </tr>
+            
+
+
+            <tr class="item last toggel1">
+                <td>
+                    Authors of main conference and workshops<br/>(ICECCS2020 Conference Registration Fee)
+                </td>
+                
+                <td>
+                    $300.00 SGD
+                </td>
+            </tr>
+            <tr class="item last toggel2">
+                <td>
+                    Non-author Participants of main conference and workshops<br/>(ICECCS2020 Conference Registration Fee)
+                </td>
+                
+                <td>
+                    $100.00 SGD
+                </td>
+            </tr>
+            
+            <tr class="total toggel1">
+                <td></td>
+                
+                <td>
+                   Total: $300.00 SGD
+                </td>
+            </tr>            
+            <tr class="total toggel2">
+                <td></td>
+                
+                <td>
+                   Total: $100.00 SGD
+                </td>
+            </tr>
+
+
+            <tr class="information">
+                <td colspan="2">
+                    <table>
+                        <tr>
+                            <td>
+                                This is to acknowledge that the amount of SGD <b class="toggel1">300</b><b class="toggel2">100</b> has been paid by <b data="first_name" style = "text-transform:capitalize;display:inline-block;"></b> <b data="last_name" style = "text-transform:capitalize;display:inline-block;"></b>.<br>
+                            </td>
+                            <td>
+                            </td>
+                        </tr>
+
+
+                        <tr>
+                            <td><br/>
+                            </td>
+                            <td>
+                            </td>
+                        </tr>
+
+
+                        <tr>
+                            <td>
+                                Dr. YangLiu<br/><br/>
+                                ICECCS2020 Program Chair<br/>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                Telephone:<tel> +65 67906706</tel><br/>
+                                Fax:+65 67926559<br/>
+                                Conference Website: <a href="https://formal-analysis.com/iceccs/2020/">https://formal-analysis.com/iceccs/2020/</a> <br/>
+
+                            </td>
+                        </tr>
+
+
+                    </table>
+                </td>
+            </tr>
+            
+
+
+        </table>
+    </div>
+ </div>
+
+     <input type="button" value="Print Div Contents" id="btnPrint" />
+
+</body>
+<script type="text/javascript">
+   var getParamsAsObject =Object.fromEntries(new URLSearchParams(window.location.search));
+
+   function render_field(name,value){
+      var ele = document.querySelectorAll("[data=\""+name+"\"]");
+      if (ele.length >0){
+           Array.prototype.forEach.call(ele, function(el) {
+          // Do stuff here
+               el.innerHTML=value;
+            });
+      }
+   }
+
+   function toggle(is_hidden=false){
+         if (is_hidden){
+            var hidden="toggel2"
+         }else{
+            var hidden="toggel1"
+         }
+        var els = document.getElementsByClassName(hidden);
+        Array.prototype.forEach.call(els, function(el) {
+       // Do stuff here
+            el.style.display="none";
+         });
+   }
+
+   function render_date(){
+      let today = new Date().toLocaleDateString()
+        var els = document.getElementById("date");
+        els.innerHTML = today
+   }
+
+
+
+</script>
+    <script type="text/javascript">
+        var btnPrint=function () {
+            $("#dvContainer").show();
+//    $("#printarea").show();
+    window.print();
+
+        }
+    </script>
+
+    <script type="text/javascript">
+
+      $( document ).ready(
+            function(){
+               render_date();
+               console.log(getParamsAsObject);
+               console.log(getParamsAsObject.amount,parseInt(getParamsAsObject["amount"]),"!!")
+               if (parseInt(getParamsAsObject.amount)==300){
+                  toggle(true)
+               }else{
+                  toggle(false)
+               } 
+
+                for (var k in getParamsAsObject) {
+                    if (getParamsAsObject.hasOwnProperty(k)) {
+                       var value = getParamsAsObject[k];
+                       render_field(k,value)
+                    }
+                }
+
+               btnPrint()
+            });
+    </script>
+
+
+</html>
