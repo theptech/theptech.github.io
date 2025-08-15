@@ -2,12 +2,12 @@
 <html lang="en">
 <head>
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<meta name="robots"  content="index, follow" />
-	<meta name="description" content="ICECCS 2020: THE 27TH ASIA-PACIFIC SOFTWARE ENGINEERING CONFERENCE">
-	<meta name="keywords" content="ICECCS 2020, ICECCS2020, ICECCS">
+	<meta name="robots" content="index, follow" />
+	<meta name="description" content="XYZ Coordinates - Extract X, Y, Z coordinates from Autodesk Revit Model Elements">
+	<meta name="keywords" content="Revit, XYZ Coordinates, Autodesk, BIM, Coordinates, Structural, Foundation, ThePtech">
 	<meta name="language" content="en">
 
-	<title>THE 25TH INTERNATIONAL CONFERENCE ON ENGINEERING OF COMPLEX COMPUTER SYSTEMS</title>
+	<title>XYZ Coordinates - Revit Add-in by ThePtech</title>
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.css" rel="stylesheet">
@@ -27,220 +27,145 @@
       <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/bootstrap-select.min.js"></script>
 
         <style>
-/* Latest compiled and minified CSS included as External Resource*/
+/* General styles for the product page */
+body {
+    margin-top: 0;
+    font-family: 'Open Sans', sans-serif;
+}
 
-/* Optional theme */
+/* Jumbotron customizations */
+.jumbotron {
+    border-radius: 0;
+}
 
-/*@import url('//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-theme.min.css');*/
- body {
-    margin-top:30px;
+/* Feature box hover effects */
+.feature-box:hover {
+    transform: translateY(-5px);
+    transition: transform 0.3s ease;
 }
-.stepwizard-step p {
-    margin-top: 0px;
-    color:#666;
+
+.card:hover {
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    transition: box-shadow 0.3s ease;
 }
-.stepwizard-row {
-    display: table-row;
+
+/* Step box animations */
+.step-box:hover .step-number {
+    transform: scale(1.1);
+    transition: transform 0.3s ease;
 }
-.stepwizard {
-    display: table;
-    width: 100%;
-    position: relative;
+
+/* Review cards */
+.card {
+    border: 1px solid #e9ecef;
+    transition: all 0.3s ease;
 }
-.stepwizard-step button[disabled] {
-    /*opacity: 1 !important;
-    filter: alpha(opacity=100) !important;*/
+
+/* Smooth scrolling offset for fixed navbar */
+html {
+    scroll-behavior: smooth;
 }
-.stepwizard .btn.disabled, .stepwizard .btn[disabled], .stepwizard fieldset[disabled] .btn {
-    opacity:1 !important;
-    color:#bbb;
+
+/* Custom button styles */
+.btn-outline-light:hover {
+    background-color: white;
+    color: #667eea;
 }
-.stepwizard-row:before {
-    top: 14px;
-    bottom: 0;
-    position: absolute;
-    content:" ";
-    width: 100%;
-    height: 1px;
-    background-color: #ccc;
-    z-index: 0;
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .jumbotron h1 {
+        font-size: 2.5rem;
+    }
+    
+    .jumbotron .lead {
+        font-size: 1.1rem;
+    }
+    
+    .feature-box, .step-box {
+        margin-bottom: 30px;
+    }
 }
-.stepwizard-step {
-    display: table-cell;
-    text-align: center;
-    position: relative;
+
+/* Carousel customizations */
+.carousel-inner img {
+    max-height: 400px;
+    width: auto;
+    margin: 0 auto;
 }
-.btn-circle {
-    width: 30px;
-    height: 30px;
-    text-align: center;
-    padding: 6px 0;
-    font-size: 12px;
-    line-height: 1.428571429;
-    border-radius: 15px;
+
+.carousel-caption {
+    background: rgba(0,0,0,0.7);
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.carousel-indicators {
+    bottom: -50px;
+}
+
+.carousel-indicators li {
+    background-color: #667eea;
+}
+
+.carousel-indicators .active {
+    background-color: #764ba2;
+}
+
+.carousel-control {
+    color: #667eea;
+}
+
+.carousel-control:hover,
+.carousel-control:focus {
+    color: #764ba2;
+}
+
+.embed-responsive {
+    margin-bottom: 20px;
 }
 </style>
 
 
 <style>
-
-
+/* Custom CSS Variables */
 :root {
-      --accent: #F18260;
-      --purple: #252431;
-    }
-
-    /* * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-*/
-    /* body {
-      background: #eee;
-      color: var(--purple);
-      padding: 10% 5%;
-      font-family: system, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      line-height: 1.4;
-    }  */
-
-    .form-container {
-      position: relative;
-      background: #fff;
-      padding: 2rem;
-      border-radius: 6px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      width: 350px;
-      min-height: 300px;
-      margin: 0 auto;
-      box-shadow: 0 10px 50px 0 #ccc;
-      margin-bottom: 2rem;
-    }
-
-    /* input, button {
-      appearance: none;
-      border: none;
-      font-size: inherit;
-      background: #eee;
-      border-radius: 3px;
-      padding: 1rem;
-      width: 100%;
-    }
-
-    input {
-      margin-bottom: 1rem;
-    }
-
-    input:focus {
-      outline: 1px solid var(--accent);
-    }
-
-    button {
-      color: #fff;
-      cursor: pointer;
-      background-color: var(--purple);
-    }
-
-    button:hover {
-      background-color: var(--accent);
-    } */
-
-    .is-hidden {
-      display: none !important;
-    }
-
-    /* a {
-      display: block;
-      width: max-content;
-      margin: 0 auto;
-      color: var(--accent);
-      text-decoration: none;
-      margin-bottom: 0.5rem;
-    } */
-
-    @keyframes rotate {
-     100% { transform: rotate(360deg); }
-    }
-
-    @keyframes dash {
-     0% { stroke-dasharray: 1,200; stroke-dashoffset: 0; }
-     50% { stroke-dasharray: 89,200; stroke-dashoffset: -35; }
-     100% { stroke-dasharray: 89,200; stroke-dashoffset: -124; }
-    }
-
-    .loading {
-      position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-    }
-
-	.callback-spinner {
-      width: 40%;
-      height: 40%;
-    }
-
-    .callback-spinner svg {
-      position: relative;
-      /* height: 40%;
-      width: 40%; */
-    }
-
-    .loading-spinner {
-      width: 50px;
-      height: 50px;
-    }
-
-    .loading-spinner svg {
-      position: relative;
-      animation: rotate 2s linear infinite;
-      height: 50px;
-      width: 50px;
-    }
-
-    .loading-spinner circle {
-      stroke: var(--accent);
-      stroke-dasharray: 1,200;
-      stroke-dashoffset: 0;
-      stroke-linecap: round;
-      animation: dash 1.5s ease-in-out infinite;
-    }
-
-
-#check {
-  fill: none;
-  stroke: green;
-  stroke-width: 20;
-  stroke-linecap: round;
-  stroke-dasharray: 180;
-  stroke-dashoffset: 180;
-  animation: draw 2s infinite ease;
-}
-.wrong {
-  fill: none;
-  stroke: red;
-  stroke-width: 20;
-  stroke-linecap: round;
-  stroke-dasharray: 180;
-  stroke-dashoffset: 180;
-  animation: draw 2s infinite ease;
+    --primary-color: #667eea;
+    --secondary-color: #764ba2;
+    --accent-color: #F18260;
+    --text-color: #252431;
 }
 
-@keyframes draw {
-  to {
-    stroke-dashoffset: 0;
-  }
+/* Animation keyframes */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
+/* Page loading animation */
+.fade-in {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+/* Section spacing */
+section {
+    position: relative;
+}
+
+/* Utility classes */
+.text-primary-custom {
+    color: var(--primary-color) !important;
+}
+
+.bg-primary-custom {
+    background-color: var(--primary-color) !important;
+}
 </style>
 
 
@@ -251,711 +176,251 @@
 
 <!-- <p align="center"><img src="images/geneva/icostLogo2012.png"></p> -->
 <div id="wrap">
-	<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-		<!--<nav class="navbar navbar-inverse">-->
-		<div class="container-fluid">
-			<!-- Brand and toggle get grouped for better mobile display -->
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle" data-toggle="collapse"
-					data-target="#bs-example-navbar-collapse-1">
-					<span class="sr-only">Toggle navigation</span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" class="active" href="https://formal-analysis.com/iceccs/2020/">ICECCS 2020</a>
-			</div>
 
-			<!-- Collect the nav links, forms, and other content for toggling -->
-			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-				<ul class="nav navbar-nav">
+<div class="container " style="margin-top: 0;">
 
-					<li>&nbsp;&nbsp;&nbsp;</li>
-
-					
-					<li><a href="https://formal-analysis.com/iceccs/2020/#dates">IMPORTANT DATES</a></li>
-					<li><a href="https://formal-analysis.com/iceccs/2020/#submission">SUBMIT</a></li>
-                   <!--					<li><a href="https://formal-analysis.com/iceccs/2020/#workshops">WORKSHOPS</a></li> -->
-					<li><a href="https://formal-analysis.com/iceccs/2020/#register">REGISTER</a></li>
-
-					<li><a href="https://formal-analysis.com/iceccs/2020/#venue">VENUE</a></li>
-					<li><a href="https://formal-analysis.com/iceccs/2020/#program">PROGRAM</a></li>
-
-					<li><a href="https://formal-analysis.com/iceccs/2020/#committee">COMMITTEE</a></li>
-					<ul class="nav navbar-nav navbar-right">
-						<li><a href="https://formal-analysis.com/iceccs/2020/#sponsors">SPONSORS</a></li>
-					</ul>
-			</div><!-- /.navbar-collapse -->
-		</div><!-- /.container-fluid -->
-	</nav>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="container ">
-
-
-
-<div class="alert alert-danger alert-dismissible fade " role="alert" id="ie-alert">
-  <strong> Compatibility Warning!</strong>  Please use Chrome/Safari to access this site. Some key features do not work in browsers other than Chrome.
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-  </button>
+<!-- Hero Section -->
+<div class="jumbotron" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; margin-top: 20px;">
+    <div class="container text-center">
+        <h1 class="display-4"><strong>XYZ Coordinates</strong></h1>
+        <p class="lead">Extract X, Y, Z coordinates and Easting/Northing data from Autodesk® Revit® Model Elements</p>
+        <hr class="my-4" style="border-color: white;">
+        <p>A powerful Revit add-in that extends scheduling capabilities for structural elements, columns, foundations, and more.</p>
+        <a class="btn btn-light btn-lg" href="https://apps.autodesk.com/RVT/en/Detail/Index?id=2470352942019857447&appLang=en&os=Win64" role="button" target="_blank">
+            <i class="fa fa-download"></i> Download from Autodesk App Store
+        </a>
+        <a class="btn btn-outline-light btn-lg" href="#features" role="button" style="margin-left: 10px;">
+            Learn More
+        </a>
+    </div>
 </div>
 
-    <script>
-function getBrowserName() {
-
-    if ( navigator.userAgent.indexOf("Edge") > -1 && navigator.appVersion.indexOf('Edge') > -1 ) {
-        return 'Edge';
-    }
-    else if( navigator.userAgent.indexOf("Opera") != -1 || navigator.userAgent.indexOf('OPR') != -1 )
-    {
-        return 'Opera';
-    }
-    else if( navigator.userAgent.indexOf("Chrome") != -1 )
-    {
-        return 'Chrome';
-    }
-    else if( navigator.userAgent.indexOf("Safari") != -1)
-    {
-        return 'Safari';
-    }
-    else if( navigator.userAgent.indexOf("Firefox") != -1 ) 
-    {
-        return 'Firefox';
-    }
-    else if( ( navigator.userAgent.indexOf("MSIE") != -1 ) || (!!document.documentMode == true ) ) //IF IE > 10
-    {
-        return 'IE';
-    }  
-    else 
-    {
-        return 'unknown';
-    }
-}
-</script>
-<script type="text/javascript">
-  
-$( document ).ready(function() {
-    if (getBrowserName()!="Chrome" && getBrowserName()!="Safari"){ 
-       $("#ie-alert").addClass("in");
-    }
-  });
-</script>
-
-
-
-
-<div class="alert alert-success" role="alert">
-  <h4 class="alert-heading">Registration Now Open!</h4>
-  <p><b>Physical Meeting</b> of main conference : <b>900 SGD</b></p><hr>
-  <p><b>Virtual Meeting (Authors)</b> of main conference : <b>300 SGD</b></p><hr>
-  <p class="mb-0"><b>Virtual Meeting (Non-author)</b> Participants of main conference : <b>100 SGD</b></p><hr>
-
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <div class="stepwizard">
-        <div class="stepwizard-row setup-panel">
-            <div class="stepwizard-step col-xs-3">
-                <a href="#step-1" type="button" class="btn btn-primary btn-circle">1</a>
-                <p><small>Contact</small></p>
-            </div>
-            <div class="stepwizard-step col-xs-3">
-                <a href="#step-2" type="button" class="btn btn-default btn-circle" disabled="disabled">2</a>
-                <p><small>Institution</small></p>
-            </div>
-            <div class="stepwizard-step col-xs-3">
-                <a href="#step-3" type="button" class="btn btn-default btn-circle" disabled="disabled">3</a>
-                <p><small>Payment</small></p>
+<!-- Description Section -->
+<section style="padding: 60px 0;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h2>Description</h2>
+                <hr style="width: 100px; margin: 30px auto;">
             </div>
         </div>
-	</div>
-	
-        <div class="panel panel-primary setup-content" id="step-1">
-            <div class="panel-heading">
-                <h3 class="panel-title">Profile</h3>
-            </div>
-            <div class="panel-body">
-
-				<div class="form-row">
-					<div class="form-group ">
-						<label for="inputEmail4"> PaperID(optional)</label>
-						<input id="ip_paper_id" type="text" class="form-control" placeholder="paper id">
-					</div>
-
-
-					<div class="form-group ">
-						<label for="inputEmail4">Firstname</label>
-						<input id="ip_first_name" type="text" class="form-control"   placeholder="Firstname">
-					</div>
-					<div class="form-group ">
-						<label for="inputPassword4">Lastname</label>
-						<input id="ip_last_name" type="text" class="form-control"  placeholder="Lastname">
-					</div>
-
-				</div>
-
-
-				<div class="form-row">
-
-					<div class="form-group  ">
-						<label class="control-label">Email<font color="red">*</font></label>
-						<input id="ip_email"   type="text" required="required" class="form-control" placeholder="Enter Email" />
-					</div>
-
-					<div class="form-group  ">
-						<label class="control-label">Contact Phone</label>
-						<input id="ip_night_phone_a" maxlength="100" type="text"  class="form-control" placeholder="International Phone No" />
-					</div>
-				</div>
-
-				<div class="form-row">
-
-					<div class="form-group col-lg-12">
-						<label for="inputAddress2">Address (Autocomplete)</label>
-						<input type="text"  id="ip_useraddress"
-					onFocus="geolocate()"
-					type="text" class="form-control"   placeholder="floor,1234 Main St, country, postcode">
-					</div>
-				</div>
-
-
-				<div class="form-row" style="display:none">
-				
-					<div class="form-group col-md-4">
-						<label for="inputCity">Street</label>
-						<input class="field" id="ip_address1"   type="text" />
-					</div>
-				
-					<div class="form-group col-md-4">
-						<label for="inputCity">&nbsp;District</label>
-						<input class="field" id="ip_address2"   type="text" />
-					</div>
-				
-					<div class="form-group col-md-4">
-						<label for="inputCity">City</label>
-						<input class="field" id="ip_city"   type="text" />
-					</div>
-				
-				</div>
-				
-				
-				
-				<div class="form-row" style="display:none">
-				
-					<div class="form-group col-md-4">
-						<label for="inputCity">State</label>
-						<input class="field" id="ip_state"   type="text" />
-				
-					</div>
-				
-					<div class="form-group col-md-4">
-						<label for="inputCity">Country</label>
-						<input class="field" id="ip_country"   type="text" />
-				
-					</div>
-				
-					<div class="form-group col-md-4">
-						<label for="inputZip">Zip</label>
-						<input class="field" id="ip_zip"  type="text" />
-					</div>
-				
-				</div>
-
-                <button class="btn btn-primary nextBtn pull-right" type="button">Next</button>
-            </div>
-        </div>
-        <div class="panel panel-primary setup-content" id="step-2">
-            <div class="panel-heading">
-                <h3 class="panel-title">Institution</h3>
-            </div>
-            <div class="panel-body">
-                <div class="form-group">
-                    <label class="control-label">Institution/Organisation/Company</label>
-                    <input id="ip_company" maxlength="200" type="text"   class="form-control" placeholder="Enter Company Name" />
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1">
+                <p>XYZ Coordinate App to extract and schedule the X, Y, Z, and Easting and Northing Coordinates from the "Selected Autodesk® Revit® Model elements category".</p>
+                
+                <p>The 2015 version of "The XYZ coordinate" app will extract X, Y, Z, and Easting and Northing Coordinates from the Revit family "Structural Column" and "Foundation categories" only.</p>
+                
+                <p>2016, 2017, and 2018 versions app is an updated version of the "XYZ Coordinate" app which extends Revit's capability to schedule the X, Y, Z, and Easting and Northing Coordinates from the "Selected Revit Model elements".</p>
+                
+                <p><strong>Category limitation:</strong> Due to the Revit family categories constraint, this app can only work with some categories like Doors, Windows, Columns, Electrical Fixtures, Furniture, Room, Lighting Fixtures, etc. All other categories will be skipped.</p>
+                
+                <p>The app simply adds a set of shared parameters to each element in the selection list, followed by transferring the coordinate data of that element to its parameters.</p>
+                
+                <p>Each time when updating the location of the objects re-run the app to get the updated coordinate to the parameter file.</p>
+                
+                <div class="alert alert-info">
+                    <p><strong>Trial Period:</strong> This app is fully functional for 15 days of the trial period; this gives an opportunity for the user to check whether it works for the category/element they wanted the coordinate data.</p>
                 </div>
-                <div class="form-group">
-                    <label class="control-label">Position in Institution/Organisation/Company</label>
-                    <input id="ip_company2" maxlength="200" type="text"  class="form-control" placeholder="Enter Position" />
-                </div>
-                <button class="btn btn-primary nextBtn pull-right" type="button">Next</button>
             </div>
         </div>
-     
-        <div class="panel panel-primary setup-content" id="step-3">
-            <div class="panel-heading">
-                <h3 class="panel-title">Paypal</h3>
+    </div>
+</section>
+
+<!-- Features Section -->
+<section id="features" style="padding: 60px 0;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h2>Key Features</h2>
+                <hr style="width: 100px; margin: 30px auto;">
             </div>
-            <div class="panel-body">
-				<div class="form-group">
-					<label class="control-label">Registration Fees</label>
-
-					<select class="form-control should_expire" type="text" id="ip_amount">
-            <option data-discount=1 value="900">PhysicalMeeting 900SGD</option>
-            <option data-discount=1 value="300">VirtualMeeting Authors 300SGD</option>
-            <option data-discount=1 value="100">VirtualMeeting Non-Authors 100SGD</option>
-                    </select>>
-
-					
-                </div>
-
-                <div class="form-group">
-					   
-					<label class="control-label">Registration Fees</label>
-
-					<div id="paypal-button-container"></div>
-
-
-				</div>
-                <!-- <button class="btn btn-primary pull-right" type="submit">Finish!</button> -->
-            </div>
-		</div>
-		
-</div>
-
-
-	<div class="loading js-loading is-hidden">
-		<div class="loading-spinner">
-			<svg>
-				<circle cx="25" cy="25" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" /></svg>
-		</div>
-	</div>
-	
-	
-	<div class="js-success-message loading js-loading is-hidden">
-
-        <div class="callback-spinner">
-              <h3> <font color="green"> <b>COMPLETE REGISTRATION!</b><br><p style="margin-left: 5%;margin-top: 15%;width: 120%;">  Thank you for registering for the ICECCS2020.</p></font></h3>
-			<svg width="150" height="150">
-				<path id="check" d="M10,50 l25,40 l95,-70"></path>
-			</svg>
-	
         </div>
+        <div class="row">
+            <div class="col-md-4 text-center">
+                <div class="feature-box" style="padding: 30px; margin: 20px 0;">
+                    <i class="fa fa-map-marker fa-3x" style="color: #667eea; margin-bottom: 20px;"></i>
+                    <h4>Coordinate Extraction</h4>
+                    <p>Extract X, Y, Z coordinates from Revit model elements.</p>
+                </div>
+            </div>
+            <div class="col-md-4 text-center">
+                <div class="feature-box" style="padding: 30px; margin: 20px 0;">
+                    <i class="fa fa-building fa-3x" style="color: #667eea; margin-bottom: 20px;"></i>
+                    <h4>Multiple Categories</h4>
+                    <p>Works with Doors, Windows, Columns, and more.</p>
+                </div>
+            </div>
+            <div class="col-md-4 text-center">
+                <div class="feature-box" style="padding: 30px; margin: 20px 0;">
+                    <i class="fa fa-refresh fa-3x" style="color: #667eea; margin-bottom: 20px;"></i>
+                    <h4>Easy Updates</h4>
+                    <p>Re-run to get updated coordinates.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
+<!-- Screenshots and Videos Section -->
+<section style="background-color: #f8f9fa; padding: 60px 0;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h2>Screenshots and Videos</h2>
+                <hr style="width: 100px; margin: 30px auto;">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <!-- Bootstrap Carousel -->
+                <div id="screenshotCarousel" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#screenshotCarousel" data-slide-to="0" class="active"></li>
+                        <li data-target="#screenshotCarousel" data-slide-to="1"></li>
+                        <li data-target="#screenshotCarousel" data-slide-to="2"></li>
+                        <li data-target="#screenshotCarousel" data-slide-to="3"></li>
+                        <li data-target="#screenshotCarousel" data-slide-to="4"></li>
+                        <li data-target="#screenshotCarousel" data-slide-to="5"></li>
+                        <li data-target="#screenshotCarousel" data-slide-to="6"></li>
+                        <li data-target="#screenshotCarousel" data-slide-to="7"></li>
+                        <li data-target="#screenshotCarousel" data-slide-to="8"></li>
+                        <li data-target="#screenshotCarousel" data-slide-to="9"></li>
+                        <li data-target="#screenshotCarousel" data-slide-to="10"></li>
+                    </ol>
 
-	</div>
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        <!-- YouTube Video Slide -->
+                        <div class="item active">
+                            <div class="embed-responsive embed-responsive-16by9">
+                                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/5bEPvB8U90Y" frameborder="0" allowfullscreen></iframe>
+                            </div>
+                            <div class="carousel-caption">
+                                <h4>Demo Video</h4>
+                                <p>Watch how XYZ Coordinates works in Revit</p>
+                            </div>
+                        </div>
 
+                        <!-- Screenshot Slides -->
+                        <div class="item">
+                            <img src="images/original_0d93b7d9-822e-42f2-9af0-39c06b335c3b_.png" alt="Screenshot 1" class="img-responsive center-block">
+                            <div class="carousel-caption">
+                                <h4>App Interface</h4>
+                            </div>
+                        </div>
 
-	<div class="js-error-message loading js-loading is-hidden">
-			<h3><b>Error!</b></h3>
-    <!-- <p class="js-error-message "><h3><b>Error!</b></h3></p> -->
-		</div>
+                        <div class="item">
+                            <img src="images/original_1b5f313b-d849-41bc-8eac-59c34cafc3b9_.png" alt="Screenshot 2" class="img-responsive center-block">
+                            <div class="carousel-caption">
+                                <h4>Coordinate Extraction</h4>
+                            </div>
+                        </div>
+
+                        <div class="item">
+                            <img src="images/original_2a1a469b-0bae-4063-97a0-e96ac3f447e8_.png" alt="Screenshot 3" class="img-responsive center-block">
+                            <div class="carousel-caption">
+                                <h4>Results Display</h4>
+                            </div>
+                        </div>
+
+                        <div class="item">
+                            <img src="images/original_32bf30ea-2087-4d60-92db-44945af42415_.png" alt="Screenshot 4" class="img-responsive center-block">
+                            <div class="carousel-caption">
+                                <h4>Element Selection</h4>
+                            </div>
+                        </div>
+
+                        <div class="item">
+                            <img src="images/original_3a75c4d4-ad3d-4025-b3a9-2561c60a3467_.png" alt="Screenshot 5" class="img-responsive center-block">
+                            <div class="carousel-caption">
+                                <h4>Parameter Setup</h4>
+                            </div>
+                        </div>
+
+                        <div class="item">
+                            <img src="images/original_7d59acc2-a07c-4773-ba3e-258be299d16b_.png" alt="Screenshot 6" class="img-responsive center-block">
+                            <div class="carousel-caption">
+                                <h4>Coordinate Data</h4>
+                            </div>
+                        </div>
+
+                        <div class="item">
+                            <img src="images/original_963f2ae1-8a6a-4f54-a31c-74afcc40d705_.png" alt="Screenshot 7" class="img-responsive center-block">
+                            <div class="carousel-caption">
+                                <h4>Schedule View</h4>
+                            </div>
+                        </div>
+
+                        <div class="item">
+                            <img src="images/original_b76b2a23-27ec-49d6-9b38-54700525e812_.png" alt="Screenshot 8" class="img-responsive center-block">
+                            <div class="carousel-caption">
+                                <h4>Element Properties</h4>
+                            </div>
+                        </div>
+
+                        <div class="item">
+                            <img src="images/original_d47dea40-2581-4bfb-8735-6bcd5c0a028d_.png" alt="Screenshot 9" class="img-responsive center-block">
+                            <div class="carousel-caption">
+                                <h4>Export Options</h4>
+                            </div>
+                        </div>
+
+                        <div class="item">
+                            <img src="images/original_f1edb734-5b1d-4c19-ae6d-8c4da8d9e954_.png" alt="Screenshot 10" class="img-responsive center-block">
+                            <div class="carousel-caption">
+                                <h4>Final Results</h4>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Left and right controls -->
+                    <a class="left carousel-control" href="#screenshotCarousel" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#screenshotCarousel" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" style="background-color: #f8f9fa; padding: 60px 0;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h2>Contact</h2>
+                <hr style="width: 100px; margin: 30px auto;">
+                <p><i class="fa fa-envelope"></i> <a href="mailto:theptech@outlook.com">theptech@outlook.com</a></p>
+                            </div>
+        </div>
+    </div>
+</section>
 
 </div><!--<div id="wrap">-->
 
 
-<div  style="display:none;">
-
-            <form  method="post"  id="paypalform" name="submit-to-google-sheet">
-              <input type="hidden" name="paypal_ref" value="none_paypal_ref">
-              <input type="hidden" name="paypal_logstr" value="none_paypal_logstr">
-              <input type="hidden" name="amount" value="0.01">
-
-				<input type="hidden" name="useraddress" value="none_1">
-
-              <input type="hidden" name="paper_id" value="none_paper_id">
-
-              <input type="hidden" name="company" value="none_paper_id">
-              <input type="hidden" name="company2" value="none_paper_id">
-
-
-              <input type="hidden" name="first_name" value="none_2">
-              <input type="hidden" name="last_name" value="none_3">
-              <input type="hidden" name="email" value="none_4">
-              <input type="hidden" name="night_phone_a" value="none_5">
-
-              <input type="hidden" name="address1" value="none_6">
-              <input type="hidden" name="address2" value="none_7">
-              <input type="hidden" name="city" value="none_8">
-              <input type="hidden" name="state" value="none_9">
-              <input type="hidden" name="zip" value="none_10">
-              <input type="hidden" name="country" value="none_11">
-
-            </form> 
-
-
-</div>
-
-<script src="https://www.paypalobjects.com/api/checkout.js"></script>
-
-	  <script>
-
-	window. submit_google_form=function(pay_ref_str,pay_log_str){	  
-		const scriptURL ='https://conference.wj2ai.com/proxy.php?csurl=https://script.google.com/macros/s/AKfycbxvwQ3rIyleQlCLMpO2tBaVUSIP4TZVGOR8LXy3SfYVa8yPKqI/exec'
-
-        const sc_safe = "https://conference.wj2ai.com/proxy.php?csurl=https://script.google.com/macros/s/AKfycbws5j3Y1HSHATUuBoUjjG4yl6c0HTZYm_pIP3sjcN9sTtjZWUXZ/exec"
-
-
-
-        const redis_page = "https://conference.wj2ai.com/misc/redis.php"
-        const notify_page = "rece.html"
-
-
-
-		function showLoadingIndicator () {
-			$(".container").first().addClass('is-hidden')
-			$('.js-loading').first().removeClass('is-hidden')
-		}
-
-		function showSuccessMessage (msg) {
-				$('.js-success-message').first().removeClass('is-hidden')
-				$('.js-success-message').first().innerHtml("<a href=\""+msg+"\">We are generating Your Receipt</a>")
-
-				$('.js-loading').first().addClass('is-hidden')
-		}
-
-		function showErrorMessage (error) {
-			console.error('Error!', error)
-			
-				$('.js-error-message').first().removeClass('is-hidden')
-				$('.js-error-message').first().text(error)
-				$('.js-loading').first().addClass('is-hidden')
-		}
-
-
-
-
-  
-    // loading 
-    showLoadingIndicator()
-
-    // auto fill form 
-
-    $('#paypalform input[name=paypal_logstr]').first().val(pay_log_str)
- 
-    $('#paypalform input[name=paypal_ref]').first().val(pay_ref_str)
- 
-   var setform_field=function(search_name){
-
-      var inner_ele = $('#paypalform input[name="'+search_name+'"]')
-      
-      var outer_ele = $('#ip_'+search_name)
-      var outer_ele2 = $('#ip_'+search_name+" option:selected")
-
-      if ( outer_ele.length &&  inner_ele.length ) {
-        if (outer_ele.val() ) {
-          inner_ele .val(outer_ele.val() )
-        }else if(outer_ele2.val()){
-            inner_ele .val(outer_ele2.val() )
-        }
-
-      }
-     
-
-
-    }
-
-    $('#paypalform input[type=hidden]').each(function(e,v){
-      setform_field(v.name)
-    });
-
-        $.ajax({
-           type: "POST",
-           url: redis_page,
-           data: $("#paypalform").first().serialize(),
-             success: function(response){ 
-             },
-             error: function (xhr, textStatus, error) {
-             }
-         });
-
-        $.ajax({
-           type: "POST",
-           url: scriptURL,
-           data: $("#paypalform").first().serialize(),
-             success: function(response){ 
-             },
-             error: function (xhr, textStatus, error) {
-             }
-         });
-
-
-		$.ajax({
-           type: "POST",
-           url:  sc_safe,
-           data: $("#paypalform").first().serialize(), // serializes the form's elements.
-           success: function(response)
-           {
-                 var data_str=$("#paypalform").first().serialize()
-                 var notify_page_go = notify_page +"?"+ data_str
-                              window.setTimeout( function(){
-                                   window.location =notify_page_go ;
-                               }, 1000 );
-
-                 
-           },
-           error: function (xhr, textStatus, error) {
-
-               var data_str=$("#paypalform").first().serialize()
-               var notify_page_go = notify_page +"?"+ data_str;
-                window.setTimeout( function(){
-                     window.location =notify_page_go ;
-                 }, 1000 );
-              },
-
-    		 });
-		 
-
-
-	}
-	
-
-
-
-
-
- 			
-
-paypal.Button.render({
-
-    // Set your environment
-
-    env: 'production', // sandbox | production
-
-    // Pass the client ids to use to create your transaction on sandbox and production environments
-
-  //      sandbox:    'AcB-RnPuwRNc8uBek-xRKs_gZqhQyX4bMWhwH8rl3w5W-kz_H25a3aMNhw_BpOeo-p9pi_QeJEE-XfuF', // from https://developer.paypal.com/developer/applications/
-//        production: 'ARAhl4h5tBLyb-seeNvylmhl6H-rgvEsP2OEAzYZYq4sZE-CIitHcy4zCbeW9JWBJeCog-iynzBOG44g'  // from https://developer.paypal.com/developer/applications/
-    client: {
-//        production: "ARAhl4h5tBLyb-seeNvylmhl6H-rgvEsP2OEAzYZYq4sZE-CIitHcy4zCbeW9JWBJeCog-iynzBOG44g",
-//        sandbox: "ARAhl4h5tBLyb-seeNvylmhl6H-rgvEsP2OEAzYZYq4sZE-CIitHcy4zCbeW9JWBJeCog-iynzBOG44g",
-            production: "Ac86nKLk5dWit0VkOdjyNPiPhPOSzqK-JDgNo8Saul336prJH0Z99NaVowdZ88Ci8ufx4JERRMOWVJ8o",
-        sandbox: "Ac86nKLk5dWit0VkOdjyNPiPhPOSzqK-JDgNo8Saul336prJH0Z99NaVowdZ88Ci8ufx4JERRMOWVJ8o",
-
-    },
-
-    // Pass the payment details for your transaction
-    // See https://developer.paypal.com/docs/api/payments/#payment_create for the expected json parameters
-
-    payment: function() {
-      var total  = $("#ip_amount option:selected").val()
-
-      console.log("taota",total)
-        return paypal.rest.payment.create(this.props.env, this.props.client, {
-            transactions: [
-                {
-                    amount: {
-                        total:    total,
-                        currency: 'SGD'
-                    },
-                    //custom: purchaseOrderNumber
-                    note_to_payee:"iceccs2020",
-                    //note_to_payer:"iceccs2020",
-
-                }
-            ]
-        });
-    },
-
-    // Display a "Pay Now" button rather than a "Continue" button
-
-    commit: true,
-
-    style: {
-      size: 'responsive',
-      color: 'gold',
-      shape: 'pill',
-         layout: 'vertical',
-    },
-
-    funding: {
-         allowed: [ paypal.FUNDING.CREDIT,paypal.FUNDING.CARD,paypal.FUNDING.ELV,paypal.FUNDING.VENMO ]
-    },
-
-    // Pass a function to be called when the customer completes the payment
-
-    onAuthorize: function(data, actions) {
-
-        return actions.payment.execute().then(function(param) {
-
-            var paypal_log_str= encodeURIComponent(JSON.stringify(param) )
-            var paypal_ref_id= encodeURIComponent(param.id )
-
-            console.log('The payment was completed!');
-			       submit_google_form(paypal_ref_id, paypal_log_str )
-			     console.log('form submit');
-
-            //param is the json response
-        });
-    },
-
-    // Pass a function to be called when the customer cancels the payment
-
-    onCancel: function(data) {
-
-
-        console.log('The payment was cancelled!');
-    }
-
-}, '#paypal-button-container');
-
-
-</script>
 
 <script>
-	
-	
-	$(document).ready(function () {
-
-    var navListItems = $('div.setup-panel div a'),
-        allWells = $('.setup-content'),
-        allNextBtn = $('.nextBtn');
-
-    allWells.hide();
-
-    navListItems.click(function (e) {
+// Smooth scrolling for navigation links
+$(document).ready(function(){
+    $('a[href^="#"]').on('click',function (e) {
         e.preventDefault();
-        var $target = $($(this).attr('href')),
-            $item = $(this);
-
-        if (!$item.hasClass('disabled')) {
-            navListItems.removeClass('btn-primary').addClass('btn-default');
-            $item.addClass('btn-primary');
-            allWells.hide();
-            $target.show();
-            $target.find('input:eq(0)').focus();
-        }
+        var target = this.hash;
+        var $target = $(target);
+        $('html, body').stop().animate({
+            'scrollTop': $target.offset().top - 70
+        }, 900, 'swing', function () {
+            window.location.hash = target;
+        });
     });
-
-    allNextBtn.click(function () {
-        var curStep = $(this).closest(".setup-content"),
-            curStepBtn = curStep.attr("id"),
-            nextStepWizard = $('div.setup-panel div a[href="#' + curStepBtn + '"]').parent().next().children("a"),
-            curInputs = curStep.find("input[type='text'],input[type='url']"),
-            isValid = true;
-
-        $(".form-group").removeClass("has-error");
-        for (var i = 0; i < curInputs.length; i++) {
-            if (!curInputs[i].validity.valid) {
-                isValid = false;
-                $(curInputs[i]).closest(".form-group").addClass("has-error");
-            }
-        }
-
-        if (isValid) nextStepWizard.removeAttr('disabled').trigger('click');
-    });
-
-    $('div.setup-panel div a.btn-primary').trigger('click');
 });
-	</script>
-
-
-
-<script>
-// This sample uses the Autocomplete widget to help the user select a
-// place, then it retrieves the address components associated with that
-// place, and then it populates the form fields with those details.
-// This sample requires the Places library. Include the libraries=places
-// parameter when you first load the API. For example:
-// <script
-// src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
-
-var placeSearch, autocomplete;
-
-var map_component = {
-
-  street_number: 'ip_address1',
-  route: 'ip_address2',
-  locality: 'ip_city',
-  administrative_area_level_1: 'ip_state',
-  country: 'ip_country',
-  postal_code: 'ip_zip'
-
-}
-
-var componentForm = {
-  ip_address1: 'short_name',
-  ip_address2: 'long_name',
-  ip_city: 'long_name',
-  ip_state: 'short_name',
-  ip_country: 'long_name',
-  ip_zip: 'short_name'
-};
-
-
-function initAutocomplete() {
-  // Create the autocomplete object, restricting the search predictions to
-  // geographical location types.
-  autocomplete = new google.maps.places.Autocomplete(
-      document.getElementById('ip_useraddress'), {types: ['geocode']});
-
-  // Avoid paying for data that you don't need by restricting the set of
-  // place fields that are returned to just the address components.
-  autocomplete.setFields(['address_component']);
-
-  // When the user selects an address from the drop-down, populate the
-  // address fields in the form.
-  autocomplete.addListener('place_changed', fillInAddress);
-}
-
-function fillInAddress() {
-  // Get the place details from the autocomplete object.
-  var place = autocomplete.getPlace();
-
-  for (var component in componentForm) {
-    document.getElementById(component).value = '';
-    document.getElementById(component).disabled = false;
-  }
-
-  // Get each component of the address from the place details,
-  // and then fill-in the corresponding field on the form.
-  for (var i = 0; i < place.address_components.length; i++) {
-    var addressType_unknown  = place.address_components[i].types[0];
-
-    if (map_component[addressType_unknown]) {
-      var addressType = map_component[addressType_unknown]
-    }
-    if (componentForm[addressType]) {
-      var val = place.address_components[i][componentForm[addressType]];
-      document.getElementById(addressType).value = val;
-    }
-  }
-}
-
-// Bias the autocomplete object to the user's geographical location,
-// as supplied by the browser's 'navigator.geolocation' object.
-function geolocate() {
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(function(position) {
-      var geolocation = {
-        lat: position.coords.latitude,
-        lng: position.coords.longitude
-      };
-      var circle = new google.maps.Circle(
-          {center: geolocation, radius: position.coords.accuracy});
-      autocomplete.setBounds(circle.getBounds());
-    });
-  }
-}
-	</script>
-	
-
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCW-z745kxDYZDR2GAMqbsMXlGg4SRRbOU&libraries=places&callback=initAutocomplete"
-async defer></script>
+</script>
 
 	</body>
 	</html>
